@@ -12,24 +12,49 @@
 
 <body>
   <main>
-    <h1>Hangman</h1>
+    <div class="title">
+      <h1>Hangman</h1>
 
-    <p>Press a key to guess a letter!</p>
-
-    <h2>Current Word</h2>
-    <p id="current-word"></p>
+      <p>Press a key to guess a letter!</p>
+    </div>
     
-    <h2>Letters Guessed</h2>
-    <p id="letters-guessed"></p>
+    <div class="side">
+      <img id="win-image">
 
-    <h2>Guesses Remaining</h2>
-    <p id="guesses-remaining"></p>
+      <div class="side-group">
+        <label class="side-label" for="last-word">Last Word</label>
+        <output id="last-word"></output>
+      </div>
+    </div>
 
-    <h2>Wins</h2>
-    <p id="wins"></p>
+    <div class="stage">
+      <div class="stage-group">
+        <label class="top-label" for="current-word">Current Word</label>
+        <output id="current-word"></output>
+      </div>
+      
+      <div class="stage-group">
+        <label class="top-label" for="letters-guessed">Letters Guessed</label>
+        <output id="letters-guessed"></output>
+      </div>
 
-    <h2>Losses</h2>
-    <p id="losses"></p>
+      <div class="stage-group">
+        <label class="top-label" for="guesses-remaining">Guesses Remaining</label>
+        <output id="guesses-remaining"></output>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stats-group">
+        <label class="side-label" for="wins">Wins</label>
+        <output id="wins"></output>
+      </div>
+
+      <div class="stats-group">
+        <label class="side-label" for="losses">Losses</label>
+        <output id="losses"></output>
+      </div>
+    </div>
   </main>
 </body>
 

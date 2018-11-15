@@ -1,4 +1,11 @@
+body {
+  display: grid;
+  grid-template-areas: ". main .";
+  grid-template-columns: 1fr 800px 1fr;
+}
+
 h1 {
+  font-family: sans-serif;
   font-size: 2em;
   font-weight: bold;
   margin: 0.67em 0;
@@ -10,11 +17,82 @@ h2 {
   margin: 0.83em 0;
 }
 
+label {
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
 main {
-  padding: 0 1em;
+  display: grid;
+  grid-area: main;
+  grid-gap: 1em;
+  grid-template-areas:
+    "title title"
+    "stage side"
+    "stats stats";
+  grid-template-columns: 1fr 1fr;
+}
+
+.side {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  grid-area: side;
+  justify-content: center;
+}
+
+.side-label {
+  margin-right: 0.125em;
+}
+
+.stage {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  grid-area: stage;
+  justify-content: center;
+  text-align: center;
+}
+
+.stage-group {
+  margin-bottom: 1em;
+}
+
+.stage-group:last-child {
+  margin-bottom: 0;
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  grid-area: stats;
+}
+
+.stats-group {
+  margin-right: 1em;
+}
+
+.stats-group:last-child {
+  margin-right: 0;
+}
+
+.title {
+  grid-area: title;
+  text-align: center;
+}
+
+.top-label {
+  display: block;
+  margin-bottom: 0.5em;
 }
 
 #current-word {
   font-family: monospace;
   letter-spacing: 0.25em;
+}
+
+#win-image {
+  height: 200px;
+  margin-bottom: 1em;
+  width: 200px;
 }
