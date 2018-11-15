@@ -6,15 +6,13 @@ body {
 
 h1 {
   font-family: sans-serif;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
   margin: 0.67rem 0;
 }
 
-h2 {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin: 0.83rem 0;
+html {
+  font-size: 125%;
 }
 
 label {
@@ -41,6 +39,7 @@ main {
   grid-area: side;
   justify-content: center;
   padding: 1rem;
+  text-align: center;
 }
 
 .side-label {
@@ -83,7 +82,7 @@ main {
 
 .title {
   grid-area: title;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
   text-align: center;
 }
 
@@ -94,12 +93,19 @@ main {
 
 #current-word {
   font-family: monospace;
-  letter-spacing: 0.25rem;
+  font-size: 1.25em;
+  letter-spacing: 0.25em;
+}
+
+#last-word {
+  font-family: monospace;
+  font-size: 1.25em;
+  letter-spacing: 0.25em;
 }
 
 #letters-guessed {
   display: block;
-  min-height: 1rem;
+  min-height: 1em;
 }
 
 #win-image {
@@ -112,6 +118,7 @@ main {
   body {
     grid-template-areas: "main";
     grid-template-columns: 1fr;
+    padding: 0 1rem;
   }
 }
 
