@@ -3,23 +3,18 @@
 var keysDown = [];
 
 var game = {
-    currentWord: "",
-    currentWordReadout: document.getElementById("current-word"),
-    guessesRemainingReadout: document.getElementById("guesses-remaining"),
-    guessMax: 0,
-    lettersGuessed: [],
-    lettersGuessedReadout: document.getElementById("letters-guessed"),
-    losses: 0,
-    lossesReadout: document.getElementById("losses"),
-    wins: 0,
-    winsReadout: document.getElementById("wins"),
-
-  startNewGame: function() {
-    this.currentWord = "secret";
-    this.lettersGuessed = [];
-    this.guessMax = 10;
-    this.updateReadouts();
-  },
+  currentWord: "",
+  currentWordReadout: document.getElementById("current-word"),
+  guessesRemainingReadout: document.getElementById("guesses-remaining"),
+  guessMax: 0,
+  lettersGuessed: [],
+  lettersGuessedReadout: document.getElementById("letters-guessed"),
+  losses: 0,
+  lossesReadout: document.getElementById("losses"),
+  wins: 0,
+  winsReadout: document.getElementById("wins"),
+  wordIndex: 0,
+  words: shuffle(["secret", "wow", "mangoes"]),
 
   determineLettersShown: function() {
     let lettersShown = "";
@@ -60,6 +55,20 @@ var game = {
     this.startNewGame();
   },
 
+  pickWord: function() {
+    const word = this.words[this.wordIndex];
+    this.wordIndex = (this.wordIndex + 1) % this.words.length;
+    return word;
+  },
+
+  startNewGame: function() {
+    this.currentWord = this.pickWord();
+    this.lettersGuessed = [];
+    this.guessMax = 10;
+    let lettersShown = this.determineLettersShown();
+    this.updateReadouts(lettersShown);
+  },
+
   updateReadouts: function(lettersShown) {
     this.currentWordReadout.textContent = lettersShown;
     this.lettersGuessedReadout.textContent = this.lettersGuessed.join(", ");
@@ -78,6 +87,16 @@ var game = {
 function isAlphabetic(string) {
   const value = string.toLowerCase();
   return string.length === 1 && value >= "a" && value <= "z";
+}
+
+function shuffle(a) {
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = a[i];
+    a[i] = a[j];
+    a[j] = temp;
+  }
+  return a;
 }
 
 
