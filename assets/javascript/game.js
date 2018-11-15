@@ -41,9 +41,32 @@ var game = {
   winsReadout: document.getElementById("wins"),
   wordIndex: 0,
   words: shuffle([
-    new WordPick("kiwi", "assets/images/kiwi.png"),
-    new WordPick("apple", "assets/images/apple.jpg"),
-    new WordPick("mango", "assets/images/mango.jpg"),
+    new WordPick("avocado", "🥑"),
+    new WordPick("broccoli", "🥦"),
+    new WordPick("burrito", "🌯"),
+    new WordPick("chocolate", "🍫"),
+    new WordPick("coconut", "🥥"),
+    new WordPick("croissant", "🥐"),
+    new WordPick("cucumber", "🥒"),
+    new WordPick("doughnut", "🍩"),
+    new WordPick("dumpling", "🥟"),
+    new WordPick("eggplant", "🍆"),
+    new WordPick("fries", "🍟"),
+    new WordPick("grapes", "🍇"),
+    new WordPick("hamburger", "🍔"),
+    new WordPick("kiwi", "🥝"),
+    new WordPick("lollipop", "🍭"),
+    new WordPick("mushroom", "🍄"),
+    new WordPick("pancakes", "🥞"),
+    new WordPick("pineapple", "🍍"),
+    new WordPick("popcorn", "🍿"),
+    new WordPick("pretzel", "🥨"),
+    new WordPick("sandwich", "🥪"),
+    new WordPick("spaghetti", "🍝"),
+    new WordPick("strawberry", "🍓"),
+    new WordPick("taco", "🌮"),
+    new WordPick("tangerine", "🍊"),
+    new WordPick("watermelon", "🍉"),
   ]),
 
   determineLettersShown: function() {
@@ -84,7 +107,7 @@ var game = {
 
   lose: function() {
     this.losses += 1;
-    this.winImageDisplay.src = "";
+    this.winImageDisplay.textContent = "❌";
     this.startNewGame();
   },
 
@@ -99,29 +122,23 @@ var game = {
     this.lastWord = this.currentWord;
     this.currentWord = this.pickWord();
     this.lettersGuessed = [];
-    this.guessesRemaining = 10;
+    this.guessesRemaining = 8;
     let lettersShown = this.determineLettersShown();
     this.updateReadouts(lettersShown);
   },
 
   updateReadouts: function(lettersShown) {
-    const lettersGuessed = this.lettersGuessed.join(", ");
-    if (lettersGuessed.length == 0) {
-      this.lettersGuessedReadout.textContent = "·";
-    } else {
-      this.lettersGuessedReadout.textContent = lettersGuessed;
-    }
-
     this.currentWordReadout.textContent = lettersShown;
     this.guessesRemainingReadout.textContent = this.guessesRemaining;
-    this.winsReadout.textContent = this.wins;
-    this.lossesReadout.textContent = this.losses;
     this.lastWordReadout.textContent = this.lastWord;
+    this.lettersGuessedReadout.textContent = this.lettersGuessed.join(", ");
+    this.lossesReadout.textContent = this.losses;
+    this.winsReadout.textContent = this.wins;
   },
 
   win: function() {
     this.wins += 1;
-    this.winImageDisplay.src = this.winImage;
+    this.winImageDisplay.textContent = this.winImage;
     this.startNewGame();
   },
 };
