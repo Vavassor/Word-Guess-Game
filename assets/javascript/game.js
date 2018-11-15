@@ -5,8 +5,8 @@ var keysDown = [];
 var game = {
   currentWord: "",
   currentWordReadout: document.getElementById("current-word"),
+  guessesRemaining : 0,
   guessesRemainingReadout: document.getElementById("guesses-remaining"),
-  guessMax: 0,
   lettersGuessed: [],
   lettersGuessedReadout: document.getElementById("letters-guessed"),
   losses: 0,
@@ -35,16 +35,18 @@ var game = {
 
     this.lettersGuessed.push(letter);
 
-    const guessesRemaining = this.guessMax - this.lettersGuessed.length;
-    if (guessesRemaining <= 0) {
-      this.lose();
-      return;
-    }
-
-    let lettersShown = this.determineLettersShown();
+    const lettersShown = this.determineLettersShown();
     if (lettersShown === this.currentWord) {
       this.win();
       return;
+    }
+
+    if (!this.currentWord.includes(letter)) {
+      this.guessesRemaining -= 1;
+      if (this.guessesRemaining <= 0) {
+        this.lose();
+        return;
+      }
     }
 
     this.updateReadouts(lettersShown);
@@ -64,7 +66,7 @@ var game = {
   startNewGame: function() {
     this.currentWord = this.pickWord();
     this.lettersGuessed = [];
-    this.guessMax = 10;
+    this.guessesRemaining = 10;
     let lettersShown = this.determineLettersShown();
     this.updateReadouts(lettersShown);
   },
@@ -72,7 +74,7 @@ var game = {
   updateReadouts: function(lettersShown) {
     this.currentWordReadout.textContent = lettersShown;
     this.lettersGuessedReadout.textContent = this.lettersGuessed.join(", ");
-    this.guessesRemainingReadout.textContent = this.guessMax - this.lettersGuessed.length;
+    this.guessesRemainingReadout.textContent = this.guessesRemaining;
     this.winsReadout.textContent = this.wins;
     this.lossesReadout.textContent = this.losses;
   },
