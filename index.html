@@ -5,6 +5,8 @@
   <meta charset="utf-8">
   <title>Word Guess Game</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Kumar+One+Outline&text=Word%20Guess" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono|Slabo+27px" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/reset.css">
   <link rel="stylesheet" href="assets/css/style.css">
   <script defer type="text/javascript" src="assets/javascript/game.js"></script>
@@ -15,7 +17,7 @@
     <div class="title">
       <h1>🍊Word Guess🌮</h1>
 
-      <p>Press a key to guess a letter!</p>
+      <p class="instructions">Press a key to guess a letter!</p>
     </div>
     
     <div class="side">
@@ -23,14 +25,14 @@
 
       <div class="side-group">
         <label class="side-label" for="last-word">Last Word</label>
-        <output id="last-word"></output>
+        <output class="word-display" id="last-word"></output>
       </div>
     </div>
 
     <div class="stage">
       <div class="stage-group">
         <label class="top-label" for="current-word">Current Word</label>
-        <output id="current-word"></output>
+        <output class="word-display" id="current-word"></output>
       </div>
 
       <div class="stage-group">
